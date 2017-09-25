@@ -1,0 +1,20 @@
+body {
+    background-color: lightgoldenrodyellow;
+}
+
+.dpi {
+    height: 1in;
+    left: -100%;
+    position: absolute;
+    top: -100%;
+    width: 1in;
+}
+
+.paper {
+    margin: 15px 10px;
+    border: 1px solid lightgray;
+    width: 595px; 
+    height: 842px;
+    box-shadow: 10px 10px 5px #888888;   
+    background-color: white;
+}

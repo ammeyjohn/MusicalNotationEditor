@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Numbered Musical Notation Editor</title>
+	<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	
+	<div id="dpi" class="dpi"></div>
+	<div class="row">
+		<div class="col-md-8">
+			<svg id="svg" class="paper"></svg>
+		</div>
+		<div class="col-md-4">
+			Right property bar
+		</div>
+	</div>
+
+	<script src="../node_modules/jquery/dist/jquery.js"></script>
+	<script src="../node_modules/snapsvg/dist/snap.svg.js"></script>
+	<script src="../dist/bundle.js"></script>
+
+	<script>
+		function getDPI() {
+  			return document.getElementById("dpi").offsetHeight;
+		}
+		console.log("DPI =", getDPI());
+
+		// A4 = 297*210mm
+		function getPixel() {
+			var dpi = getDPI()
+			var INCH_PER_MM = 25.4;
+			var width = 210 / INCH_PER_MM * dpi;
+			var height = 297 / INCH_PER_MM * dpi;
+			$('svg').css({
+				'width': width,
+				'height': height
+			});
+		}
+		getPixel();
+	</script>
+</body>
+</html>
