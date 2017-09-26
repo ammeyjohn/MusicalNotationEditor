@@ -59,7 +59,8 @@ module.exports = {
         new ExtractTextPlugin('editor.css')
     ],
     externals: {
-        snapsvg: 'Snap'
+        snapsvg: 'Snap',
+        $: 'jquery'
     },
     devtool: 'inline-source-map',
     devServer: {

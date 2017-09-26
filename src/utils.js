@@ -1,6 +1,6 @@
 'use strict';
 
-const utils = {}
+const utils = {};
 
 // 获取屏幕分辨率（PPI）
 utils.getPPI = function() {
@@ -15,7 +15,7 @@ utils.getPPI = function() {
     ppi = document.defaultView.getComputedStyle(div, null).getPropertyValue('width');
     body.removeChild(div);
     return parseInt(ppi);
-}
+};
 
 // 获取纸张的屏幕尺寸（像素）
 utils.getPaperSize = function(type) {
@@ -36,7 +36,7 @@ utils.getPaperSize = function(type) {
         'width': width,
         'height': height
     };
-}
+};
 
 // 单独导出每个方法
 for (var fn in utils) {
