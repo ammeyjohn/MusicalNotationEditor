@@ -48,7 +48,7 @@ module.exports = {
             to: 'vendors/snapsvg/dist'
         }]),
         new HtmlWebpackPlugin({
-            filename: 'editor.html',
+            filename: 'index.html',
             template: path.resolve(__dirname, 'src/editor/editor.html'),
         }),
         new ExtractTextPlugin('editor.css')
@@ -58,10 +58,6 @@ module.exports = {
     },
     devtool: 'inline-source-map',
     devServer: {
-        contentBase: path.resolve(__dirname, 'dist'),
-        compress: true,
-        historyApiFallback: true,
-        inline: true,
-        publicPath: './dist/'
+        contentBase: path.resolve(__dirname, 'dist')
     }
 };
