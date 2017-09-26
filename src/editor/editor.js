@@ -1,5 +1,8 @@
 'use strict';
 
+import './editor.scss';
+import drm from '../doremi.js';
+
 function getDPI() {
     return document.getElementById("dpi").offsetHeight;
 }
