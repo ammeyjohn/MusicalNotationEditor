@@ -1,0 +1,40 @@
+{
+  "name": "MusicalNotationEditor",
+  "version": "0.0.1",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "dev": "webpack-dev-server --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ammeyjohn/MusicalNotationEditor.git"
+  },
+  "keywords": [
+    "musical",
+    "score",
+    "notation"
+  ],
+  "author": "Patrick <ammeyjohn@qq.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ammeyjohn/MusicalNotationEditor/issues"
+  },
+  "homepage": "https://github.com/ammeyjohn/MusicalNotationEditor#readme",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.2.1",
+    "snapsvg": "^0.5.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "css-loader": "^0.28.7",
+    "node-sass": "^4.5.3",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.8.2"
+  }
+}
