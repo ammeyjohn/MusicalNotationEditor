@@ -2,7 +2,7 @@
 
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
@@ -13,12 +13,15 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].js'
     },
+    resolve: {
+        modules: ['../node_modules']
+    },
     module: {
         rules: [{
-            enforce: "pre",
+            enforce: 'pre',
             test: /\.js$/,
             exclude: /node_modules/,
-            loader: "eslint-loader",
+            loader: 'eslint-loader',
         }, {
             test: /\.js$/,
             exclude: /node_modules/,
@@ -32,12 +35,12 @@ module.exports = {
             test: /\.scss$/,
             use: ExtractTextPlugin.extract({
                 use: [{
-                    loader: "css-loader"
+                    loader: 'css-loader'
                 }, {
-                    loader: "sass-loader"
+                    loader: 'sass-loader'
                 }],
                 // use style-loader in development
-                fallback: "style-loader"
+                fallback: 'style-loader'
             })
         }]
     },

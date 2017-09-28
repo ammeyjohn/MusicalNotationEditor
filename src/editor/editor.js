@@ -10,10 +10,11 @@ var size = getPaperSize('A4');
 $('svg').css(size);
 
 var score = new Score('#svg');
-score.draw('0 1 2 3 4 5 6 7 # b');
+score.draw();
 
 // 参考资料
 /*
+https://zh.wikipedia.org/wiki/%E5%BC%B7%E5%BC%B1%E6%B3%95
 https://packages.debian.org/stable/fonts/fonts-oflb-euterpe
 https://elbsound.studio/experiments-in-automatic-font-conversion.php
 https://googlechrome.github.io/samples/classes-es6/

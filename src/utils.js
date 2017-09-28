@@ -1,9 +1,9 @@
 'use strict';
 
-const utils = {};
+const Utils = {};
 
 // 获取屏幕分辨率（PPI）
-utils.getPPI = function() {
+Utils.getPPI = function() {
     var ppi = 96;
     var div = document.createElement('div');
     div.style.width = '1in';
@@ -18,7 +18,7 @@ utils.getPPI = function() {
 };
 
 // 获取纸张的屏幕尺寸（像素）
-utils.getPaperSize = function(type) {
+Utils.getPaperSize = function(type) {
     // 定义纸张尺寸（毫米）
     var PAPERS = {
         'A4': {
@@ -28,7 +28,7 @@ utils.getPaperSize = function(type) {
     };
     // 每英寸25.4毫米
     var INCH_PER_MM = 25.4;
-    var ppi = utils.getPPI();
+    var ppi = Utils.getPPI();
     var paper = PAPERS[type];
     var width = paper.width / INCH_PER_MM * ppi;
     var height = paper.height / INCH_PER_MM * ppi;
@@ -39,7 +39,7 @@ utils.getPaperSize = function(type) {
 };
 
 // 单独导出每个方法
-for (var fn in utils) {
-    exports[fn] = utils[fn];
+for (var fn in Utils) {
+    exports[fn] = Utils[fn];
 }
-export default utils;
+export default Utils;
