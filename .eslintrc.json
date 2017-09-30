@@ -12,6 +12,7 @@
         "indent": ["error", 4],
         "quotes": ["warn", "single"],
         "semi": ["error", "always"],
-        "no-unused-vars": ["warn", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }]
+        "no-unused-vars": ["warn", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }],
+        "no-console": ["error", { "allow": ["time", "timeEnd", "warn", "error"] }]
     }
 }

@@ -3,11 +3,11 @@
 import Symbol from './symbol.js';
 
 export default class Dot extends Symbol {
-    constructor(x, y) {
-        super('dots.dot', x, y);
+    constructor() {
+        super('dots.dot');
     }
 
-    draw(g, scale) {
-        super.draw(g, scale);
+    draw(g, x, y) {
+        return super.draw(g, x, y);
     }
 }

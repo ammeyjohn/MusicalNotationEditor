@@ -1,5 +1,6 @@
 'use strict';
 
+import Snap from 'snapsvg';
 import Glyphs from './glyphs.js';
 
 var clonePath = function(pathArray) {
@@ -14,34 +15,53 @@ var clonePath = function(pathArray) {
 };
 
 export default class Symbol {
-    constructor(name, x, y) {
+    constructor(name) {
         this.__name = name;
-        if (!Glyphs[name]) {
-            throw name + ' cannot be found.';
+        this.__glyph = Glyphs[name];
+        if (!this.__glyph) {
+            throw 'Glyphs "' + name + '" cannot be found.';
         }
-        this.__glyph = clonePath(Glyphs[name].d);
-        this.__glyph[0][1] += x;
-        this.__glyph[0][2] += y;
-
-        this.__size = {
-            width: Glyphs[name].w,
-            height: Glyphs[name].h
-        };
-
-        this.__bound = {
-            top: y,
-            left: x,
-            bottom: y + this.__size.height,
-            right: x + this.__size.width
+        this.__box = {
+            x: 0.0,
+            y: 0.0,
+            x2: 0.0,
+            y2: 0.0,
+            w: this.__glyph.w,
+            h: this.__glyph.h
         };
     }
 
-    get bound() {
-        return this.__bound;
+    get name() {
+        return this.__name;
     }
 
-    draw(g, scale) {
-        var path = g.path();
-        path.attr({ path: this.__glyph });
+    get box() {
+        return this.__box;
+    }
+
+    draw(g, x, y) {
+        console.time('Draw symbol ' + this.__name);
+
+        this.__ele = g.path()
+            .attr({ "path": this.__glyph.d, "stroke-width": 0 })
+            .transform('t' + x + ',' + y);
+        this.__update_box(this.__ele);
+
+        console.timeEnd('Draw symbol ' + this.__name);
+
+        return this.__ele;
+    }
+
+    __update_box(ele) {
+        var box = ele.getBBox();
+        this.__box = {
+            x: box.x,
+            y: box.y,
+            x2: box.x2,
+            y2: box.y2,
+            w: box.w,
+            h: box.h
+        };
+        return this.__box;
     }
 }

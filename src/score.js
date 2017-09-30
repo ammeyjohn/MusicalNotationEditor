@@ -4,35 +4,46 @@ import range from 'lodash/range.js';
 import Snap from 'snapsvg';
 import Glyphs from './glyphs.js';
 // import Settings from './settings.js';
-import Symbol from './symbol.js';
 import Note from './note.js';
-import Rest from './rest.js';
-import Flat from './accidential_flat.js';
-import Sharp from './accidential_sharp.js';
-import Dot from './dot.js';
 
 export default class Score {
     constructor(eleName) {
-        this.paper = Snap(eleName);
+        this.__paper = Snap(eleName);
     }
 
     draw() {
+        console.time('Draw score');
 
+        // 再高音区
         for (var i in range(0, 8)) {
-            var note = new Note(i, i * 20 + 10, 20, 2);
-            note.draw(this.paper);
+            var note = new Note(i, 2);
+            note.draw(this.__paper, i * 20 + 5, 50);
         }
 
-        var sharp = new Sharp(10, 50);
-        sharp.draw(this.paper);
+        // 高音区
+        for (var i in range(0, 8)) {
+            var note = new Note(i, 1);
+            note.draw(this.__paper, i * 20 + 165, 50);
+        }
 
-        var flat = new Flat(30, 50);
-        flat.draw(this.paper);
+        // 中音区
+        for (var i in range(0, 8)) {
+            var note = new Note(i);
+            note.draw(this.__paper, i * 20 + 325, 50);
+        }
 
-        var dot = new Dot(10, 80);
-        dot.draw(this.paper);
+        // 低音区
+        for (var i in range(0, 8)) {
+            var note = new Note(i, -1);
+            note.draw(this.__paper, i * 20 + 480, 50);
+        }
 
-        var symbol = new Symbol('.', 10, 500);
-        symbol.draw(this.paper);
+        // 重低音区
+        for (var i in range(0, 8)) {
+            var note = new Note(i, -2);
+            note.draw(this.__paper, i * 20 + 640, 50);
+        }
+
+        console.timeEnd('Draw score');
     }
 }

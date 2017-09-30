@@ -1,22 +1,44 @@
 'use strict';
 
 import Symbol from './symbol.js';
+import Dot from './dot.js';
 
 export default class Note extends Symbol {
-    constructor(name, x, y, duration = 1) {
-        super(name.toString(), x, y);
-        this.__duration = duration;
+    constructor(pitch, level = 0) {
+        super(pitch.toString());
+        this.__level = level;
     }
 
-    get duration() {
-        return this.__duration;
+    draw(g, x, y) {
+        console.time('Draw note ' + super.name);
+
+        var ele = super.draw(g, x, y);
+        ele = this.__draw_pitch(g, ele);
+
+        console.timeEnd('Draw note ' + super.name);
     }
 
-    draw(g, scale) {
-        super.draw(g, scale);
+    __draw_pitch(g, note) {
+        if (this.__level == 0) {
+            return note;
+        }
 
-        var b = super.bound;
-        var l = g.line(b.left, b.bottom - 10, b.right, b.bottom - 10);
-        l.attr({ stroke: 'black' });
+        var l = Math.abs(this.__level),
+            d = Math.sign(this.__level);
+
+        var grp = g.g(note);
+
+        var x = super.box.x + super.box.w / 2 - 2,
+            y = d > 0 ? super.box.y : super.box.y2;
+        for (var i = 0; i < l; i++) {
+            y += (-d * 5);
+
+            var dot = new Dot().draw(g, x, y);
+            grp.add(dot);
+        }
+
+        this.__update_box(grp);
+
+        return grp;
     }
 }
