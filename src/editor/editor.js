@@ -19,4 +19,5 @@ https://packages.debian.org/stable/fonts/fonts-oflb-euterpe
 https://elbsound.studio/experiments-in-automatic-font-conversion.php
 https://googlechrome.github.io/samples/classes-es6/
 https://github.com/paulrosen/abcjs/blob/master/write/abc_glyphs.js
+http://www.pianohome.com/simplenote.htm#diaoshi
 */

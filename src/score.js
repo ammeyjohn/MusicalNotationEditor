@@ -5,6 +5,8 @@ import Snap from 'snapsvg';
 import Glyphs from './glyphs.js';
 // import Settings from './settings.js';
 import Note from './note.js';
+import { KEYS } from './note.js';
+import Measure from './measure.js';
 
 export default class Score {
     constructor(eleName) {
@@ -14,35 +16,23 @@ export default class Score {
     draw() {
         console.time('Draw score');
 
-        // 再高音区
-        for (var i in range(0, 8)) {
-            var note = new Note(i, 2);
-            note.draw(this.__paper, i * 20 + 5, 50);
+        var offset = 18;
+        for (var j = -2; j <= 2; j++) {
+            for (var i in range(0, 8)) {
+                var note = new Note(i, j);
+                note.draw(this.__paper, i * 18 + offset, 50);
+            }
+            offset += 150;
         }
 
-        // 高音区
-        for (var i in range(0, 8)) {
-            var note = new Note(i, 1);
-            note.draw(this.__paper, i * 20 + 165, 50);
-        }
-
-        // 中音区
-        for (var i in range(0, 8)) {
-            var note = new Note(i);
-            note.draw(this.__paper, i * 20 + 325, 50);
-        }
-
-        // 低音区
-        for (var i in range(0, 8)) {
-            var note = new Note(i, -1);
-            note.draw(this.__paper, i * 20 + 480, 50);
-        }
-
-        // 重低音区
-        for (var i in range(0, 8)) {
-            var note = new Note(i, -2);
-            note.draw(this.__paper, i * 20 + 640, 50);
-        }
+        var symbols = [
+            KEYS.M1,
+            KEYS.U1,
+            KEYS.L1,
+            KEYS.UU1
+        ];
+        var measure = new Measure(symbols, { w: 100, h: 50 });
+        measure.draw(this.__paper, 5, 100);
 
         console.timeEnd('Draw score');
     }

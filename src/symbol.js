@@ -40,14 +40,14 @@ export default class Symbol {
     }
 
     draw(g, x, y) {
-        console.time('Draw symbol ' + this.__name);
+        // console.time('Draw symbol ' + this.__name);
 
         this.__ele = g.path()
             .attr({ "path": this.__glyph.d, "stroke-width": 0 })
             .transform('t' + x + ',' + y);
         this.__update_box(this.__ele);
 
-        console.timeEnd('Draw symbol ' + this.__name);
+        // console.timeEnd('Draw symbol ' + this.__name);
 
         return this.__ele;
     }
